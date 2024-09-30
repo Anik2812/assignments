@@ -1,4 +1,4 @@
-use practical_1;
+use BDA_23162121021;
 create table Salesman_master (S_no varchar(10), S_name varchar(20), City varchar(20), Pin int, State varchar(20), Sal_Amt int, Tgt_to_get int,Ytd_sales int, Reamrks varchar(20));
 desc Salesman_master;
 insert into Salesman_master values('S001', 'Kiran', 'Bombay', 400002, 'Maharashtra', 3000, 100, 50, 'Excellent');

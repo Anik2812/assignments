@@ -1,0 +1,127 @@
+import os
+import time
+import random
+import platform
+import threading
+import socket
+
+try:
+    import requests
+    from pyfiglet import Figlet
+except ImportError:
+    print("Installing required modules...")
+    os.system("pip install requests pyfiglet")
+    import requests
+    from pyfiglet import Figlet
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def type_effect(text, speed=0.03):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(speed)
+    print()
+
+def print_scary(text):
+    f = Figlet(font='slant')
+    print(f.renderText(text))
+
+def fake_file_scanner():
+    directories = ["/sys", "/etc", "/usr", "/home", "/var", "C:\\Windows\\System32", "C:\\Users"]
+    files = ["passwords.txt", "credit_cards.dat", "bank_accounts.db", "emails.log", "browser_history.sqlite"]
+    
+    for _ in range(50):
+        directory = random.choice(directories)
+        file = random.choice(files)
+        print(f"Extracting: {directory}/{file}")
+        time.sleep(0.1)
+
+def fake_ip_scanner():
+    for _ in range(30):
+        ip = f"{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}"
+        print(f"Compromising IP: {ip}")
+        time.sleep(0.2)
+
+def fake_download(filename, size):
+    for i in range(101):
+        clear_screen()
+        print(f"Downloading {filename} - {size}MB")
+        print(f"Progress: [{'#' * i}{' ' * (100-i)}] {i}%")
+        time.sleep(0.05)
+
+def get_system_info():
+    info = {
+        "OS": platform.system(),
+        "OS Version": platform.version(),
+        "Machine": platform.machine(),
+        "Processor": platform.processor(),
+        "Hostname": socket.gethostname(),
+        "IP Address": socket.gethostbyname(socket.gethostname())
+    }
+    return info
+
+def display_system_info(info):
+    print("System Information:")
+    for key, value in info.items():
+        print(f"{key}: {value}")
+
+def fake_encryption_process():
+    directories = ["Documents", "Pictures", "Videos", "Desktop"]
+    extensions = ["docx", "pdf", "jpg", "mp4", "txt", "xlsx"]
+    
+    for _ in range(100):
+        directory = random.choice(directories)
+        file = f"file_{random.randint(1000, 9999)}.{random.choice(extensions)}"
+        print(f"Encrypting: {directory}/{file}")
+        time.sleep(0.05)
+
+def countdown_timer(seconds):
+    for remaining in range(seconds, 0, -1):
+        print(f"\rTime remaining: {remaining:02d}:{59:02d}", end='')
+        time.sleep(1)
+
+def main():
+    clear_screen()
+    print_scary("SYSTEM BREACH")
+    type_effect("Initiating advanced system exploitation...", 0.05)
+    time.sleep(1)
+    
+    clear_screen()
+    print("Bypassing security protocols...")
+    fake_ip_scanner()
+    
+    clear_screen()
+    print("Infiltrating system architecture...")
+    system_info = get_system_info()
+    display_system_info(system_info)
+    time.sleep(3)
+    
+    clear_screen()
+    print("Extracting sensitive data...")
+    fake_file_scanner()
+    
+    clear_screen()
+    type_effect("Access granted. Downloading user database...", 0.05)
+    fake_download("user_credentials.db", 2048)
+    
+    clear_screen()
+    print_scary("SYSTEM COMPROMISED")
+    ip = requests.get('https://api.ipify.org').text
+    type_effect(f"Your Public IP: {ip}", 0.1)
+    type_effect("All your files are being encrypted.", 0.1)
+    fake_encryption_process()
+    
+    clear_screen()
+    print_scary("PAY OR LOSE")
+    type_effect("Your personal data will be leaked in:", 0.1)
+    countdown_timer(30)
+    
+    clear_screen()
+    print_scary("GAME OVER")
+    type_effect("Your time is up. Prepare for consequences.", 0.1)
+    
+    input("Press Enter to exit...")
+
+if __name__ == "__main__":
+    main()

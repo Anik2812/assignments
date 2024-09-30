@@ -10,11 +10,11 @@ class scan {
 		Scanner S = new Scanner (System.in);
 
 		System.out.print("Enter your name: ");
-		a = S.next();
+		a = S.nextLine();
 		System.out.print("Enter your address: ");
-		b = S.next();
+		b = S.nextLine();
 		System.out.print("Enter your city: ");
-		c = S.next(); 
+		c = S.nextLine(); 
 		System.out.print("Enter your CGPA: ");
 		d = S.nextFloat();
 		System.out.print("Enter your mobile number: ");

@@ -46,23 +46,48 @@
 // }
 
 
+// #include <stdio.h>
+// void main() {
+//     printf("Making a rectangle with aestricks\n");
+//     int a,b;
+//     printf("Enter the number of aestricks in the length of the rectangle: ");
+//     scanf("%d", &a);
+//     printf("Enter the number of aestricks in the breadth of the rectangle: ");
+//     scanf("%d", &b);
+//     printf("making a hollow rectangle\n");
+
+//     for (int i = 0; i < a; i++) {
+//         for (int j = 0; j < b; j++) {
+//             if (i == 0 || i == a-1 || j == 0 || j == b-1) {
+//                 printf("* ");
+//             } else {
+//                 printf("  ");
+//             }
+//         }
+//         printf("\n");
+//     }
+
+// }
+
+
 #include <stdio.h>
-void main() {
-    printf("Making a rectangle with aestricks\n");
-    int a,b;
-    printf("Enter the number of aestricks in the length of the rectangle: ");
+
+void main(){
+
+    int a;
+    printf("Making a hollow diamond: \n");
+    printf("Enter the number of asterisks in the length of the diamond: ");
     scanf("%d", &a);
-    printf("Enter the number of aestricks in the breadth of the rectangle: ");
-    scanf("%d", &b);
 
     for (int i = 0; i < a; i++) {
-        for (int j = 0; j < b; j++) {
-            printf("* ");
+        for (int j = 0; j < a; j++) {
+            if (i+j == a/2 || j-i == a/2 || i-j == a/2 || i+j == a + a/2 - 1 || i+j == a/2 + a - 1 || i-j == a/2 + a - 1) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
         }
         printf("\n");
     }
-
-
-
 
 }
